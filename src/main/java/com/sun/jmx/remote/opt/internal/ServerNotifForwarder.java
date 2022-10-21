@@ -245,30 +245,14 @@ public class ServerNotifForwarder {
 	 * Explicitly check the MBeanPermission for
 	 * the current access control context.
 	 */
-	private void checkMBeanPermission(final ObjectName name,
-			final String actions)
-			throws InstanceNotFoundException, SecurityException {
+	private void checkMBeanPermission(final ObjectName name, final String actions) throws InstanceNotFoundException, SecurityException {
 		SecurityManager sm = System.getSecurityManager();
 		if (sm != null) {
 			AccessControlContext acc = AccessController.getContext();
-			ObjectInstance oi = null;
-			try {
-				oi = (ObjectInstance) AccessController.doPrivileged(
-						new PrivilegedExceptionAction() {
-							public Object run()
-									throws InstanceNotFoundException {
-								return mbeanServer.getObjectInstance(name);
-							}
-						});
-			}
-			catch (PrivilegedActionException e) {
-				throw (InstanceNotFoundException) extractException(e);
-			}
+			ObjectInstance oi = mbeanServer.getObjectInstance(name);
+
 			String classname = oi.getClassName();
-			MBeanPermission perm = new MBeanPermission(classname,
-					null,
-					name,
-					actions);
+			MBeanPermission perm = new MBeanPermission(classname, null, name, actions);
 			sm.checkPermission(perm, acc);
 		}
 	}
