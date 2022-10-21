@@ -60,7 +60,7 @@ import javax.management.remote.JMXServiceURL;
  * connections to clients.</p>
  *
  * <p>An instance of this interface can be communicated to the Generic
- * Conenctor Server using the attribute {@link
+ * Connector Server using the attribute {@link
  * GenericConnectorServer#MESSAGE_CONNECTION_SERVER} in the
  * <code>Map</code> passed to its constructor.</p>
  */
@@ -76,7 +76,7 @@ public interface MessageConnectionServer {
      *
      * @exception IOException if the server cannot be activated.
      */
-    public void start(Map env) throws IOException;
+    void start(Map env) throws IOException;
 
     /**
      * <p>Listens for a connection to be made to this server and
@@ -87,7 +87,7 @@ public interface MessageConnectionServer {
      * @exception IOException if an I/O error occurs when waiting for
      * a connection.
      */
-    public MessageConnection accept() throws IOException;
+    MessageConnection accept() throws IOException;
 
     /**
      * <p>Terminates this server.  On return from this method, new
@@ -101,7 +101,7 @@ public interface MessageConnectionServer {
      * after <code>stop()</code>, whether or not it gets
      * <code>IOException</code>.
      */
-    public void stop() throws IOException;
+    void stop() throws IOException;
 
     /**
      * <p>The address of this connection server.</p>
@@ -109,5 +109,5 @@ public interface MessageConnectionServer {
      * @return the address of this connection server, or null if it does
      * not have one.
      */
-    public JMXServiceURL getAddress();
+    JMXServiceURL getAddress();
 }

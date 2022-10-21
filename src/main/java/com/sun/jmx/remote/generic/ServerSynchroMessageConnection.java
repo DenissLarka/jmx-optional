@@ -64,10 +64,10 @@ public interface ServerSynchroMessageConnection extends SynchroMessageConnection
      * @param cb a callback used to treat a remote request.
      * @exception IllegalArgumentException thrown if the value of cb is null.
      */
-    public void setCallback(SynchroCallback cb);
+    void setCallback(SynchroCallback cb);
 
     /**
      * Returns a connection-specific subject used for authorization.
      */
-    public Subject getSubject();
+    Subject getSubject();
 }

@@ -77,6 +77,5 @@ public interface ProfileServerProvider {
      * @exception NullPointerException if <code>profile</code> or
      * <code>environment</code> is null.
      */
-    public ProfileServer createProfile(String profile, Map environment)
-	throws ProfileProviderException;
+    public ProfileServer createProfile(String profile, Map environment)	throws ProfileProviderException;
 }

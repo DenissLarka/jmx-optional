@@ -68,5 +68,5 @@ public interface ProfileMessage extends Message {
      *
      * @return the profile name.
      */
-    public String getProfileName();
+    String getProfileName();
 }
