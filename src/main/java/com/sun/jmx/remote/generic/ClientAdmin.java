@@ -69,17 +69,17 @@ public interface ClientAdmin {
      * @exception IOException Any of the usual Input/Output related exceptions during the verification.
      * @exception SecurityException if the verification failed.
      */
-    public MessageConnection connectionOpen(MessageConnection mc) throws IOException;
+    MessageConnection connectionOpen(MessageConnection mc) throws IOException;
 
     /**
      * Informs that a transport connection has been closed.
      *
      * @param mc a <code>MessageConnection</code> object which has been closed.
      */
-    public void connectionClosed(MessageConnection mc);
+    void connectionClosed(MessageConnection mc);
 
     /**
      * Returns a client id specified by its server. This id is received from the <code>HandshakeBeginMessage</code>
      */
-    public String getConnectionId();
+    String getConnectionId();
 }

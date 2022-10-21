@@ -66,10 +66,10 @@ public interface SynchroCallback {
      * If the return value is null, then an implementation does not need to send back this null value to the other side. This is the case when receiving messages sent by the <code>sendOneWay</code> method.
      * For example, a client will send <code>CloseMessage</code> using the <code>sendOneWay</code> method and a server receiving this message should return null.
      */
-    public Message execute(Message request);
+    Message execute(Message request);
 
     /**
      * Called when an Exception occurs when reading a request sent by the peer or when writing the response to the recived request.
      */
-    public void connectionException(Exception ie);
+    void connectionException(Exception ie);
 }

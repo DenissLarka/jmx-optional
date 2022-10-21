@@ -69,5 +69,5 @@ public interface ClientSynchroMessageConnection extends SynchroMessageConnection
      * supported by an implementation.
      * @exception IOException if a communication problem occures.
      */
-    public Message sendWithReturn(Message msg) throws IOException;
+    Message sendWithReturn(Message msg) throws IOException;
 }

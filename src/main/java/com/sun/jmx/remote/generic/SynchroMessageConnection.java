@@ -73,7 +73,7 @@ public interface SynchroMessageConnection {
      *
      * @exception IOException if the connection cannot be made.
      */
-    public void connect(Map env) throws IOException;
+    void connect(Map env) throws IOException;
 
     /** 
      * Sends a message to the remote side and does not need a response.
@@ -90,15 +90,15 @@ public interface SynchroMessageConnection {
      * by an implementation.
      * @exception IOException if a message could not be sent because of a communication problem.
      */
-    public void sendOneWay(Message msg) throws IOException, UnsupportedOperationException;
+    void sendOneWay(Message msg) throws IOException, UnsupportedOperationException;
 
     /**
      * Returns this connection identifier.
      */
-    public String getConnectionId();
+    String getConnectionId();
 
     /**
      * Closes this connection.
      */
-    public void close() throws IOException;
+    void close() throws IOException;
 }

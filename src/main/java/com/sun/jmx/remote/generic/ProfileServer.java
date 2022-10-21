@@ -59,11 +59,11 @@ import javax.security.auth.Subject;
  *
  */
 public interface ProfileServer {
-    public void initialize(MessageConnection mc, Subject s) throws IOException;
-    public ProfileMessage produceMessage() throws IOException;
-    public void consumeMessage(ProfileMessage pm) throws IOException;
-    public boolean isComplete();
-    public Subject activate() throws IOException;
-    public void terminate() throws IOException;
-    public String getName();
+    void initialize(MessageConnection mc, Subject s) throws IOException;
+    ProfileMessage produceMessage() throws IOException;
+    void consumeMessage(ProfileMessage pm) throws IOException;
+    boolean isComplete();
+    Subject activate() throws IOException;
+    void terminate() throws IOException;
+    String getName();
 }
