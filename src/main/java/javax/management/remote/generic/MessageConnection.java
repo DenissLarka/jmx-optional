@@ -77,7 +77,7 @@ public interface MessageConnection {
      *
      * @exception IOException if the connection cannot be made.
      */
-    public void connect(Map env) throws IOException;
+    void connect(Map env) throws IOException;
 
     /**
      * <p>Reads a <code>Message</code> object from the other end of the
@@ -89,7 +89,7 @@ public interface MessageConnection {
      * @exception ClassNotFoundException If the class of a serialized
      * object cannot be found.
      */
-    public Message readMessage() throws IOException, ClassNotFoundException;
+    Message readMessage() throws IOException, ClassNotFoundException;
 
     /**
      * <p>Writes a <code>Message</code> object to the other end of the
@@ -99,7 +99,7 @@ public interface MessageConnection {
      * @exception IOException if the message could not be written
      * because of a communication problem.
      */
-    public void writeMessage(Message msg) throws IOException;
+    void writeMessage(Message msg) throws IOException;
 
     /**
      * <p>Terminates this object connection.  After calling this
@@ -113,7 +113,7 @@ public interface MessageConnection {
      * methods of this object after <code>close()</code>, whether or
      * not it gets <code>IOException</code>.
      */
-    public void close() throws IOException;
+    void close() throws IOException;
 
     /**
      * <p>The ID for this connection.</p>
@@ -121,5 +121,5 @@ public interface MessageConnection {
      * @return the ID for this connection.  This method can return
      * null if the connection handshake is not yet complete.</p>
      */
-    public String getConnectionId();
+    String getConnectionId();
 }

@@ -127,8 +127,7 @@ public class TLSServerHandler implements ProfileServer {
 			// Should never happen as this code is only executed when
 			// running with the bundled JSSE, i.e. J2SE 1.4 or later.
 			//
-			throw (IOException)
-					EnvHelp.initCause(new IOException(t.getMessage()), t);
+			throw (IOException) EnvHelp.initCause(new IOException(t.getMessage()), t);
 		}
 	}
 
@@ -143,8 +142,7 @@ public class TLSServerHandler implements ProfileServer {
 			// Should never happen as this code is only executed when
 			// running with the bundled JSSE, i.e. J2SE 1.4 or later.
 			//
-			throw (IOException)
-					EnvHelp.initCause(new IOException(t.getMessage()), t);
+			throw (IOException) EnvHelp.initCause(new IOException(t.getMessage()), t);
 		}
 	}
 
@@ -159,8 +157,7 @@ public class TLSServerHandler implements ProfileServer {
 			// Should never happen as this code is only executed when
 			// running with the bundled JSSE, i.e. J2SE 1.4 or later.
 			//
-			throw (IOException)
-					EnvHelp.initCause(new IOException(t.getMessage()), t);
+			throw (IOException) EnvHelp.initCause(new IOException(t.getMessage()), t);
 		}
 	}
 
@@ -175,8 +172,7 @@ public class TLSServerHandler implements ProfileServer {
 			// Should never happen as this code is only executed when
 			// running with the bundled JSSE, i.e. J2SE 1.4 or later.
 			//
-			throw (IOException)
-					EnvHelp.initCause(new IOException(t.getMessage()), t);
+			throw (IOException) EnvHelp.initCause(new IOException(t.getMessage()), t);
 		}
 	}
 
@@ -191,8 +187,7 @@ public class TLSServerHandler implements ProfileServer {
 			// Should never happen as this code is only executed when
 			// running with the bundled JSSE, i.e. J2SE 1.4 or later.
 			//
-			throw (IOException)
-					EnvHelp.initCause(new IOException(t.getMessage()), t);
+			throw (IOException)					EnvHelp.initCause(new IOException(t.getMessage()), t);
 		}
 	}
 

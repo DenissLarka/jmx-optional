@@ -54,7 +54,9 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.management.MBeanServerConnection;
+import javax.management.NotificationFilter;
 import javax.management.ObjectInstance;
+import javax.management.ObjectName;
 import javax.management.remote.generic.ObjectWrapping;
 import javax.security.auth.Subject;
 
@@ -96,8 +98,8 @@ public class MBeanServerRequestMessage implements Message {
     /**
      * <p>Identifier for the method {@link
      * MBeanServerConnection#addNotificationListener(ObjectName,
-     * NotificationListener, NotificationFilter, Object)}.  This
-     * message allows several listeners to be added at the same
+     * ObjectName, NotificationFilter, Object)}
+     * This message allows several listeners to be added at the same
      * time.</p>
      *
      * <p>The meaning of this message is : register for notifications

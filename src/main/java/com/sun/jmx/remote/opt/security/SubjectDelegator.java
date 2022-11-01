@@ -69,9 +69,7 @@ public class SubjectDelegator {
 	   operation on behalf of the delegatedSubject.  If the
 	   authenticatedAccessControlContext does not have permission to
 	   delegate to that subject, throw SecurityException.  */
-	public synchronized AccessControlContext
-	delegatedContext(AccessControlContext authenticatedACC,
-			Subject delegatedSubject)
+	public synchronized AccessControlContext delegatedContext(AccessControlContext authenticatedACC, Subject delegatedSubject)
 			throws SecurityException {
 
 		if (principalsCache == null || accCache == null) {
@@ -82,8 +80,7 @@ public class SubjectDelegator {
 		// Retrieve the principals for the given
 		// delegated subject from the cache
 		//
-		Principal[] delegatedPrincipals = (Principal[])
-				principalsCache.get(delegatedSubject);
+		Principal[] delegatedPrincipals = (Principal[]) principalsCache.get(delegatedSubject);
 
 		// Convert the set of principals stored in the
 		// delegated subject into an array of principals
@@ -97,18 +94,15 @@ public class SubjectDelegator {
 		// Retrieve the access control context for the
 		// given delegated subject from the cache
 		//
-		AccessControlContext delegatedACC = (AccessControlContext)
-				accCache.get(delegatedSubject);
+		AccessControlContext delegatedACC = (AccessControlContext) accCache.get(delegatedSubject);
 
 		// Build the access control context to be used
 		// when executing code as the delegated subject
 		// and store it in the cache
 		//
 		if (delegatedACC == null) {
-			final JMXSubjectDomainCombiner sdc = new
-					JMXSubjectDomainCombiner(delegatedSubject);
-			delegatedACC =
-					new AccessControlContext(AccessController.getContext(), sdc);
+			final JMXSubjectDomainCombiner sdc = new JMXSubjectDomainCombiner(delegatedSubject);
+			delegatedACC = new AccessControlContext(AccessController.getContext(), sdc);
 			accCache.put(delegatedSubject, delegatedACC);
 		}
 
@@ -121,10 +115,8 @@ public class SubjectDelegator {
 				new PrivilegedAction() {
 					public Object run() {
 						for (int i = 0; i < dp.length; i++) {
-							final String pname =
-									dp[i].getClass().getName() + "." + dp[i].getName();
-							Permission sdp =
-									new SubjectDelegationPermission(pname);
+							final String pname = dp[i].getClass().getName() + "." + dp[i].getName();
+							Permission sdp = new SubjectDelegationPermission(pname);
 							AccessController.checkPermission(sdp);
 						}
 						return null;

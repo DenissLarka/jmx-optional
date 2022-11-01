@@ -964,8 +964,7 @@ class ClientIntermediary {
 			}
 		}
 
-		protected void removeListenerForMBeanRemovedNotif(Integer id)
-				throws IOException {
+		protected void removeListenerForMBeanRemovedNotif(Integer id) throws IOException {
 
 			logger.trace("GenericClientNotifForwarder-" +
 							"removeListenerForMBeanRemovedNotif",
@@ -973,11 +972,8 @@ class ClientIntermediary {
 							"UNREGISTRATION_NOTIFICATION.");
 
 			try {
-				int code = MBeanServerRequestMessage.
-						REMOVE_NOTIFICATION_LISTENER_FILTER_HANDBACK;
-				mBeanServerRequest(code,
-						new Object[] {delegateName, id},
-						null, false);
+				int code = MBeanServerRequestMessage.REMOVE_NOTIFICATION_LISTENER_FILTER_HANDBACK;
+				mBeanServerRequest(code, new Object[] {delegateName, id}, null, false);
 			}
 			catch (Exception e) {
 				throw appropriateException(e);
@@ -992,7 +988,7 @@ class ClientIntermediary {
 							connection.getConnectionId(),
 							lostNotifCounter++,
 							message,
-							new Long(number));
+							Long.valueOf(number));
 			client.sendNotification(n);
 		}
 
@@ -1021,27 +1017,21 @@ class ClientIntermediary {
 			boolean reconnect)
 			throws Exception {
 
-		MBeanServerRequestMessage req =
-				new MBeanServerRequestMessage(methodId,
-						params,
-						delegationSubject);
+		MBeanServerRequestMessage req = new MBeanServerRequestMessage(methodId, params, delegationSubject);
 
 		MBeanServerResponseMessage resp;
 
 		try {
-			resp = (MBeanServerResponseMessage)
-					connection.sendWithReturn(req);
+			resp = (MBeanServerResponseMessage) connection.sendWithReturn(req);
 		}
 		catch (IOException e) {
-			if (terminated || !reconnect ||
-					e instanceof InterruptedIOException) {
+			if (terminated || !reconnect || e instanceof InterruptedIOException) {
 				throw e;
 			}
 
 			communicatorAdmin.gotIOException(e);
 
-			resp = (MBeanServerResponseMessage)
-					connection.sendWithReturn(req);
+			resp = (MBeanServerResponseMessage) connection.sendWithReturn(req);
 		}
 
 		Object wrappedResult = resp.getWrappedResult(); // may throw exception
@@ -1074,8 +1064,7 @@ class ClientIntermediary {
 	 * "throw appropriateException(e)" without getting errors about
 	 * variables not initialized or missing return statements.
 	 */
-	private static IOException appropriateException(Exception e)
-			throws IOException {
+	private static IOException appropriateException(Exception e) throws IOException {
 		if (e instanceof IOException) {
 			throw (IOException) e;
 		}

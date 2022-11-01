@@ -62,13 +62,9 @@ import javax.management.remote.jmxmp.JMXMPConnectorServer;
 
 public class ServerProvider implements JMXConnectorServerProvider {
 
-	public JMXConnectorServer newJMXConnectorServer(JMXServiceURL serviceURL,
-			Map environment,
-			MBeanServer mbeanServer)
-			throws IOException {
+	public JMXConnectorServer newJMXConnectorServer(JMXServiceURL serviceURL, Map environment, MBeanServer mbeanServer) throws IOException {
 		if (!serviceURL.getProtocol().equals("jmxmp")) {
-			throw new MalformedURLException("Protocol not jmxmp: " +
-					serviceURL.getProtocol());
+			throw new MalformedURLException("Protocol not jmxmp: " + serviceURL.getProtocol());
 		}
 		return new JMXMPConnectorServer(serviceURL, environment, mbeanServer);
 	}
