@@ -47,25 +47,23 @@
 
 package com.sun.jmx.remote.opt.internal;
 
-import java.io.IOException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.management.InstanceNotFoundException;
-import javax.management.ListenerNotFoundException;
-import javax.management.MalformedObjectNameException;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerNotification;
+import javax.management.MalformedObjectNameException;
 import javax.management.Notification;
 import javax.management.NotificationBroadcaster;
 import javax.management.NotificationFilter;
@@ -74,12 +72,11 @@ import javax.management.NotificationListener;
 import javax.management.ObjectName;
 import javax.management.QueryEval;
 import javax.management.QueryExp;
-
 import javax.management.remote.NotificationResult;
 import javax.management.remote.TargetedNotification;
 
-import com.sun.jmx.remote.opt.util.EnvHelp;
 import com.sun.jmx.remote.opt.util.ClassLogger;
+import com.sun.jmx.remote.opt.util.EnvHelp;
 
 /**
  * A circular buffer of notifications received from an MBean server.
@@ -638,15 +635,12 @@ public class ArrayNotificationBuffer implements NotificationBuffer {
 			final Object handback)
 			throws Exception {
 		try {
-			AccessController.doPrivileged(new PrivilegedExceptionAction() {
-				public Object run() throws InstanceNotFoundException {
-					mBeanServer.addNotificationListener(name,
-							listener,
-							filter,
-							handback);
-					return null;
-				}
-			});
+
+			mBeanServer.addNotificationListener(name,
+					listener,
+					filter,
+					handback);
+
 		}
 		catch (Exception e) {
 			throw extractException(e);
@@ -657,12 +651,7 @@ public class ArrayNotificationBuffer implements NotificationBuffer {
 			final NotificationListener listener)
 			throws Exception {
 		try {
-			AccessController.doPrivileged(new PrivilegedExceptionAction() {
-				public Object run() throws Exception {
-					mBeanServer.removeNotificationListener(name, listener);
-					return null;
-				}
-			});
+			mBeanServer.removeNotificationListener(name, listener);
 		}
 		catch (Exception e) {
 			throw extractException(e);
@@ -671,14 +660,9 @@ public class ArrayNotificationBuffer implements NotificationBuffer {
 
 	private Set queryNames(final ObjectName name,
 			final QueryExp query) {
-		PrivilegedAction act =
-				new PrivilegedAction() {
-					public Object run() {
-						return (Set) mBeanServer.queryNames(name, query);
-					}
-				};
+
 		try {
-			return (Set) AccessController.doPrivileged(act);
+			return mBeanServer.queryNames(name, query);
 		}
 		catch (RuntimeException e) {
 			logger.fine("queryNames", "Failed to query names: " + e);
@@ -690,14 +674,9 @@ public class ArrayNotificationBuffer implements NotificationBuffer {
 	private static boolean isInstanceOf(final MBeanServer mbs,
 			final ObjectName name,
 			final String className) {
-		PrivilegedExceptionAction act =
-				new PrivilegedExceptionAction() {
-					public Object run() throws InstanceNotFoundException {
-						return new Boolean(mbs.isInstanceOf(name, className));
-					}
-				};
+
 		try {
-			return ((Boolean) AccessController.doPrivileged(act)).booleanValue();
+			return mbs.isInstanceOf(name, className);
 		}
 		catch (Exception e) {
 			logger.fine("isInstanceOf", "failed: " + e);

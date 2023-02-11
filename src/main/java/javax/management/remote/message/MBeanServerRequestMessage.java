@@ -248,20 +248,19 @@ public class MBeanServerRequestMessage implements Message {
 
     /**
      * <p>Identifier for the method
-     * {@link MBeanServerConnection#queryMBeans(ObjectName, QueryExp)}.</p>
+     * {@link MBeanServerConnection#queryMBeans(ObjectName, javax.management.QueryExp)}.</p>
      */
     public final static int QUERY_MBEANS = 17;
 
     /**
      * <p>Identifier for the method
-     * {@link MBeanServerConnection#queryNames(ObjectName, QueryExp)}.</p>
+     * {@link MBeanServerConnection#queryNames(ObjectName, javax.management.QueryExp)}.</p>
      */
     public final static int QUERY_NAMES = 18;
 
     /**
      * <p>Identifier for the method
-     * {@link MBeanServerConnection#removeNotificationListener(ObjectName,
-     * NotificationListener)}.</p>
+     * {@link MBeanServerConnection#removeNotificationListener(ObjectName, javax.management.NotificationListener)}.</p>
      *
      * <p>The parameters contained in the <code>MBeanServerRequestMessage</code>
      * for this method are the <code>ObjectName</code> and an
@@ -279,7 +278,7 @@ public class MBeanServerRequestMessage implements Message {
     /**
      * <p>Identifier for the method
      * {@link MBeanServerConnection#removeNotificationListener(ObjectName,
-     * NotificationListener, NotificationFilter, Object)}.</p>
+     * javax.management.NotificationListener, NotificationFilter, Object)}.</p>
      *
      * <p>The parameters contained in the <code>MBeanServerRequestMessage</code>
      * for this method are the <code>ObjectName</code> and an
@@ -317,7 +316,7 @@ public class MBeanServerRequestMessage implements Message {
 
     /**
      * <p>Identifier for the method
-     * {@link MBeanServerConnection#setAttribute(ObjectName, Attribute)}.</p>
+     * {@link MBeanServerConnection#setAttribute(ObjectName, javax.management.Attribute)}.</p>
      *
      * <p>The <code>Attribute</code> parameter is wrapped using
      * {@link ObjectWrapping}.</p>
@@ -327,7 +326,7 @@ public class MBeanServerRequestMessage implements Message {
     /**
      * <p>Identifier for the method
      * {@link MBeanServerConnection#setAttributes(ObjectName,
-     * AttributeList)}.</p>
+     * javax.management.AttributeList)}.</p>
      *
      * <p>The <code>AttributeList</code> is wrapped using
      * {@link ObjectWrapping}.</p>
